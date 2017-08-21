@@ -1,0 +1,39 @@
+<p-checkbox [(ngModel)]="checked" binary="true"  disabled></p-checkbox>
+
+<button pButton type="button" (click)="loadData()" label="LoadCars"></button>
+<p-dataTable [value]="cars" #dtable
+             [paginator]="true" [rows]="rows"
+             [totalRecords]="recordCount"
+             [headerCheckboxToggleAllPages]="true"
+             [(selection)]="selectedCars"
+             (onPage)="handlePageChange($event)">
+    <p-header>CRUD for Cars</p-header>
+    <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+    <p-column>
+        <ng-template pTemplate="header" let-bdata="rowData">
+            <div class="ui-chkbox ui-widget">
+                <div class="ui-helper-hidden-accessible">
+                    <input type="checkbox" [(ngModel)]="selectAllCbox"
+                           name="ckbox" [checked]="isChecked" [disabled]="isDisabled">
+                </div>
+                <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default" (click)="performSelectAllClick($event)"
+                     (mouseover)="hover=true" (mouseout)="hover=false"
+                     [ngClass]="{'ui-state-hover':hover&&!isDisabled,'ui-state-active':isChecked&&!isDisabled,'ui-state-disabled':isDisabled}">
+                    <span class="ui-chkbox-icon ui-clickable" [ngClass]="{'fa fa-check':isChecked}"></span>
+
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-rwdata="rowData" pTemplate="body" let-rdx="rowIndex">
+            <p-mycheckbox [(ngModel)]="bodyChkBox" ngDefaultControl
+                          [disabled]="rwdata.disabled"
+                          (onChange)="dtable.toggleRowWithCheckbox($event,rwdata)"
+                          [checked]="dtable.isSelected(rwdata)">
+            </p-mycheckbox>
+        </ng-template>
+    </p-column>
+    <p-column field="vin" header="Vin" [sortable]="true"></p-column>
+    <p-column field="year" header="Year" [sortable]="true"></p-column>
+    <p-column field="brand" header="Brand" [sortable]="true"></p-column>
+    <p-column field="color" header="Color" [sortable]="true"></p-column>
+</p-dataTable>

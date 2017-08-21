@@ -1,0 +1,10 @@
+{
+    "data":[
+        {"vin":"a1653d4d","brand":"VW","year":1998,"color":"White","disabled":true},
+        {"vin":"ddeb9b10","brand":"Mercedes","year":1985,"color":"Green","disabled":true},
+        {"vin":"d8ebe413","brand":"Jaguar","year":1979,"color":"Silver","disabled":false},
+        {"vin":"aab227b7","brand":"Audi","year":1970,"color":"Black","disabled":false},
+        {"vin":"631f7412","brand":"Volvo","year":1992,"color":"Red","disabled":true},
+        {"vin":"7d2d22b0","brand":"VW","year":1993,"color":"Maroon","disabled":true}
+    ]
+}
